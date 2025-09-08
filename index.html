@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div id="chat-container"></div>
+    <h1>CHAT</h1>
+    <div id="accessibility-controls">
+  <button id="toggleFont">🔠 Læsevenlig visning</button>
+  <button id="toggleSpeech">🔊 Læs AI's svar højt</button>
+  <button id="startDictation">🎙️ Brug stemme</button>
+</div>
+<div id="messages" class="dyslexic-font"></div>
+    
+    </div>
+
+    <input id="userInput" type="text" placeholder="Write a message..." spellcheck="true">
+
+    <button id="send">Send</button>
+
+    <button id="toggleDyslexicFont">🅰️ Læs med større tekst</button>
+
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+  <script src="client.js"></script>
+    <!-- <script type="module" src="/ai-bot/src/main.jsx"></script> -->
+  </body>
+</html>

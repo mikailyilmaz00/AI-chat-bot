@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f4f8;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#app {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #004080;
+}
+
+#messages {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+}
+
+#messages p {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 8px;
+  background-color: #e3f2fd;
+}
+
+#input-area {
+  display: flex;
+  gap: 10px;
+}
+
+#userInput {
+  flex-grow: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#send {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#send:hover {
+  background-color: #0056b3;
+}
+
+body.dyslexic {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+  font-size: 1.25rem;
+}
+
+#accessibility-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+#accessibility-controls button {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+#accessibility-controls button:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* Læsevenlig font */
+.dyslexic {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+}
+
+/* Større tekst */
+.large-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Gør det tydeligt */
+#accessibility-controls button {
+  margin: 0.2em;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+
+/* fonts/skrifttyper */
+
+/* Regular */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold-Italic.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Regular.woff') format('woff'),
+       url('/fonts/OpenDyslexic-Regular.otf') format('opentype'),
+       url('/fonts/OpenDyslexic-Regular.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Italic */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Italic.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold-Italic.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Bold-Italic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+.dyslexic-font {
+  font-family: 'OpenDyslexic', sans-serif;
+  font-size: 1.2em;         /* Større tekst */
+  line-height: 1.6;         /* Mere afstand mellem linjer */
+  letter-spacing: 0.05em;   /* Lidt mere afstand mellem bogstaver */
+  background-color: #fdfdfd; /* Lys baggrund */
+  color: #111;               /* Mørk tekst */
+}
