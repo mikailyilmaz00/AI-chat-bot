@@ -4,7 +4,7 @@ import ChatInput from "./chatInput"
 
 export default function ChatWindow() {
     const [messages, setMessages] = useState([
-        { text: "Hej, jeg er en chatrobot, der er her for at hjælpe dig.👋", role: "ai"}
+        { text: "Hej, jeg er her for at hjælpe dig.👋", role: "ai"}
     ])
 
 const handleSend  = (newMessage) => {
