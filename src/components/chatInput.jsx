@@ -109,7 +109,7 @@ return (
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Type or speak here"
+        placeholder="Type here"
     />
     <button  type="submit">Send</button>
     </form>
@@ -117,7 +117,7 @@ return (
 
         <button onClick= {handleStart}>Start Talking</button>
  
-    {isListening && <p style={{ color: "green" }}>🎤 Listening... </p>}
+    {isListening && <p style={{ color: "green" }}> Listening... </p>}
     {error && <p style= {{ color: "red" }}>{error}</p>}
         <ul>
         {messages.map((message, index) => (
