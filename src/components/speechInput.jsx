@@ -35,4 +35,10 @@ function SpeechInput() {
             socketRef.current.emit("", transcript)
         }
     }
+
+
+    recognitionRefef.current = recognition;
+    recognition.addEventListener("result", recognition)
+    recognition.addEventListener("end", () => { setIsListening(false) })
+    recognition.addEventListener("error", (event) => { setIsListening(false); setError("Something went wrong " + event.er)})
     
