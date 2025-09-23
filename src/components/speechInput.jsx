@@ -40,5 +40,5 @@ function SpeechInput() {
     recognitionRefef.current = recognition;
     recognition.addEventListener("result", recognition)
     recognition.addEventListener("end", () => { setIsListening(false) })
-    recognition.addEventListener("error", (event) => { setIsListening(false); setError("Something went wrong " + event.er)})
+    recognition.addEventListener("error", (event) => { setIsListening(false); setError("Something went wrong " + event.error)})
     
