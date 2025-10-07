@@ -1,3 +1,4 @@
+import { text } from "express";
 import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client"
 
@@ -73,17 +74,45 @@ const handleSetUsername = (e) => {
 }
 return (
 <div>
-    
-<ul>
+
+ {!username ? (
+    <form onSubmit={handleSetUsername}>
+        <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)} 
+        placeholder="Indtast dit navn"
+        />
+        <button type="submit">Vælg brugernavn</button>
+    </form>
+ ) : (
+    <>
+<form onSubmit={handleSubmit}>
+    <input
+    type="text"
+    value={text}
+    onChange={(e) => setText(e.target.value)}
+    placeholder="Skriv en besked..."
+    />
+    <button type="submit">Send</button>
+</form>
+<button onClick={handleStart}>Tal</button>
+
+{isListening && <p style={{ color: "green" }}>Lytter...</p>}
+
+{error && <p style={{ color: "red" }}>{error}</p>}
+
+
+    <ul>
+
     {messages.map((message, index) => (
         <li key={index}>
             <strong>{message.user}:</strong> {message.text}
         </li>
     ))}
     </ul>
-
-<button onClick={handleStart}>Start Talking</button>
-{isListening && <p style={{ color: "green" }}>Listening...</p>}
-{error && <p style={{ color: "red" }}>{error}</p>}
+    </>
+ )}
 </div>
 )
+export default SpeechInput;
