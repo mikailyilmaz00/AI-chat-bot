@@ -1,6 +1,7 @@
 import { text } from "express";
 import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client"
+import "../"
 
 
 function SpeechInput() {
@@ -19,7 +20,6 @@ function SpeechInput() {
         socketRef.current.on('chat message', (message) => {
             setMessages((prev) => [...prev, message])
         })
-    // })
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition()
@@ -53,7 +53,7 @@ function SpeechInput() {
 const handleStart = () => {
     if (recognitionRef.current) {
         setIsListening(true)
-        setError(null)
+        setError("")
         recognitionRef.current.start()
     }
 }
@@ -64,7 +64,7 @@ const handleSubmit = (e) => {
         socketRef.current.emit("chat message", { user: username, text : text })
         setText("")
     }
-    }
+
 }
 
 const handleSetUsername = (e) => {
@@ -73,46 +73,52 @@ const handleSetUsername = (e) => {
         console.log("Username set to:", username)
 }
 return (
-<div>
-
- {!username ? (
-    <form onSubmit={handleSetUsername}>
+  <div className="chat-container">
+    {!username ? (
+      <form className="username-form" onSubmit={handleSetUsername}>
         <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)} 
-        placeholder="Indtast dit navn"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Indtast dit navn"
         />
         <button type="submit">Vælg brugernavn</button>
-    </form>
- ) : (
-    <>
-<form onSubmit={handleSubmit}>
-    <input
-    type="text"
-    value={text}
-    onChange={(e) => setText(e.target.value)}
-    placeholder="Skriv en besked..."
-    />
-    <button type="submit">Send</button>
-</form>
-<button onClick={handleStart}>Tal</button>
+      </form>
+    ) : (
+      <>
+        <div className="chat-window">
+          <ul className="messages-list">
+            {messages.map((message, index) => (
+              <li
+                key={index}
+                className={`message-bubble ${
+                  message.user === username ? "user-message" : "ai-message"
+                }`}
+              >
+                <strong>{message.user}:</strong> {message.text}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-{isListening && <p style={{ color: "green" }}>Lytter...</p>}
+        <form className="chat-input-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Skriv en besked..."
+          />
+          <button type="submit">Send</button>
+          <button type="button" onClick={handleStart}>🎤</button>
+        </form>
 
-{error && <p style={{ color: "red" }}>{error}</p>}
+        {isListening && <p className="listening-text">🎧 Lytter...</p>}
+        {error && <p className="error-text">{error}</p>}
+      </>
+    )}
+  </div>
+);
 
 
-    <ul>
-
-    {messages.map((message, index) => (
-        <li key={index}>
-            <strong>{message.user}:</strong> {message.text}
-        </li>
-    ))}
-    </ul>
-    </>
- )}
-</div>
-)
+}
 export default SpeechInput;
